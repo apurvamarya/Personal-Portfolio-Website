@@ -1,158 +1,331 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Apurvam Arya — Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
-</head>
+/* Base — relative units */
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #ff6b53;
+  --primary: #0b3d91;
+  --radius: 0.8rem;
+  --container: 72rem;
+  --gap: 1.25rem;
+  --shadow: 0 6px 20px rgba(11,61,145,0.08);
+  font-size: 16px;
+}
 
-<body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #0f1724;
+  line-height: 1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1 class="brand-name">Apurvam <span class="brand-highlight">Arya</span></h1>
-        <p class="role">B.Tech · Computer Science · AI/ML</p>
-      </div>
+/* Utility container */
+.container {
+  width: min(var(--container), 92%);
+  margin: 0 auto;
+  padding: 1.25rem 0;
+}
 
-      <nav class="site-nav">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/apurvamarya" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/apurvam-arya" target="_blank">LinkedIn</a>
-      </nav>
-    </div>
-  </header>
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: .5rem .75rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: .25rem;
+}
 
-  <main id="main">
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, var(--primary), #08408f);
+  color: white;
+  box-shadow: 0 2px 8px rgba(2,6,23,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  padding: .75rem 0;
+}
+.brand-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.brand-highlight { color: var(--accent); }
+.role {
+  margin: .2rem 0 0;
+  font-size: .8rem;
+  color: rgba(255,255,255,0.9);
+}
 
-    <!-- HERO -->
-    <section class="hero section">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="intro-pre">Hi, I am</p>
-          <h2 class="hero-title">Apurvam Arya</h2>
-          <h3 class="hero-subtitle">
-            <span class="animated-role">Software Engineering Student</span>
-          </h3>
+/* Nav */
+.site-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 600;
+  font-size: .95rem;
+  opacity: .95;
+}
+.site-nav a:hover,
+.site-nav a:focus { text-decoration: underline; }
 
-          <p class="hero-desc">
-            I build structured, scalable web applications and real-time computer vision systems. Currently focused on AI/ML, frontend engineering, and system design.
-          </p>
+/* Section common */
+.section {
+  margin: 1.25rem auto;
+  padding: 2rem 0;
+  background: transparent;
+}
 
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#projects">See Projects</a>
-            <a class="btn btn-ghost" href="#contact">Contact Me</a>
-          </div>
-        </div>
+/* HERO */
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.hero-text { flex: 1 1 480px; min-width: 220px; }
+.hero-image { flex: 0 0 220px; display:flex; align-items:center; justify-content:center; }
+.hero-image img {
+  width: 13.75rem;       /* 220px */
+  height: 13.75rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid rgba(11,61,145,0.06);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+  transform: translateY(0);
+  transition: transform .45s ease;
+}
+.hero-image img:hover { transform: translateY(-6px) rotate(-1deg); }
 
-        <div class="hero-image">
-          <img src="images/profile.jpg" alt="Profile photo of Apurvam Arya">
-        </div>
-      </div>
-    </section>
+/* Hero text */
+.intro-pre { margin: 0; color: var(--muted); font-weight: 500; font-size: .95rem; }
+.hero-title {
+  margin: .25rem 0 .25rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.hero-subtitle {
+  margin: 0 0 .75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--muted);
+}
 
-    <!-- ABOUT -->
-    <section id="about" class="section about">
-      <div class="container about-inner">
-        <h2 class="section-title">About Me</h2>
-        <p>
-          I am a Computer Science student passionate about building practical systems that combine clean UI with strong backend logic. I enjoy solving real-world problems using computer vision, data structures, and scalable frontend architectures.
-        </p>
-      </div>
-    </section>
+/* Animated role — color changing (keyframes) */
+.animated-role {
+  display: inline-block;
+  padding: 0 .15rem;
+  background: linear-gradient(90deg, rgba(255,107,83,0.12), rgba(11,61,145,0.06));
+  border-radius: .35rem;
+  animation: rolePulse 4s linear infinite;
+}
+@keyframes rolePulse {
+  0% { color: var(--primary); background-position: 0% 50%; }
+  33% { color: var(--accent); }
+  66% { color: #0b5f9f; }
+  100% { color: var(--primary); }
+}
 
-    <!-- SKILLS -->
-    <section id="skills" class="section skills">
-      <div class="container">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h4>Frontend</h4>
-            <p>HTML5, CSS3, Responsive Design, DOM Manipulation</p>
-          </div>
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem 1rem;
+  border-radius: .6rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .95rem;
+  border: 1px solid transparent;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn:focus { outline: 3px solid rgba(11,61,145,0.12); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(11,61,145,0.07); }
 
-          <div class="skill-card">
-            <h4>Programming</h4>
-            <p>Python, JavaScript</p>
-          </div>
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), #0a4aa1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.06);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(11,61,145,0.08);
+}
 
-          <div class="skill-card">
-            <h4>Computer Vision</h4>
-            <p>OpenCV, LBPH Face Recognizer, Image Preprocessing</p>
-          </div>
+/* ABOUT */
+.about-inner {
+  background: var(--card);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
 
-          <div class="skill-card">
-            <h4>Core Concepts</h4>
-            <p>Data Structures, Algorithms, OOP, REST APIs</p>
-          </div>
-        </div>
-      </div>
-    </section>
+/* SKILLS GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.skill-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: .6rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.skill-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(2,6,23,0.06); }
+.skill-card h4 { margin: 0 0 .35rem; }
+.skill-level {
+  margin-top: .6rem;
+  font-size: .85rem;
+  color: var(--muted);
+}
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section projects">
-      <div class="container">
-        <h2 class="section-title">Selected Projects</h2>
-        <div class="projects-grid">
+/* PROJECTS GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.project-card {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: .6rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+  transition: transform .22s ease, box-shadow .22s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-card h3 { margin: 0 0 .5rem; }
+.project-card p { color: var(--muted); margin: 0 0 1rem; }
+.project-link {
+  align-self: start;
+  padding: .45rem .7rem;
+  border-radius: .45rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary);
+  border: 1px solid rgba(11,61,145,0.08);
+}
+.project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(2,6,23,0.06); }
 
-          <article class="project-card">
-            <h3>Smart Attendance System</h3>
-            <p>
-              Real-time face recognition attendance system using OpenCV and LBPH.
-              Captured 80 images per student and reduced manual attendance effort by ~85%.
-              Integrated secure REST-based reporting.
-            </p>
-            <a class="project-link" href="https://attendance-system-9ptl.onrender.com/" target="_blank">Live Demo</a>
-          </article>
+/* CONTACT FORM */
+.contact-inner {
+  background: var(--card);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: .8rem;
+}
+.contact-form label { display: flex; flex-direction: column; gap: .35rem; font-size: .95rem; }
+.contact-form input,
+.contact-form textarea {
+  padding: .6rem .75rem;
+  border-radius: .45rem;
+  border: 1px solid #d1d5db;
+  font-family: inherit;
+  font-size: .95rem;
+}
+.form-actions {
+  grid-column: 1 / -1;
+  display:flex;
+  gap: .6rem;
+  align-items:center;
+}
 
-          <article class="project-card">
-            <h3>Smart Event Dashboard</h3>
-            <p>
-              State-driven event management application with full CRUD functionality.
-              Implemented persistent LocalStorage, real-time search, and automatic chronological sorting (O(n log n)).
-            </p>
-            <a class="project-link" href="https://smart-event-dashboard-apurvamarya.vercel.app" target="_blank">Live Demo</a>
-          </article>
+/* FOOTER */
+.site-footer {
+  margin-top: 2rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 0;
+  border-radius: 0.4rem;
+}
+.footer-inner {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 1rem;
+}
+.back-top {
+    color: white;
+}
 
-          <article class="project-card">
-            <h3>DSA Practice Repository</h3>
-            <p>
-              Structured implementation of core data structures and algorithms
-              including stacks, greedy techniques, and dynamic programming.
-            </p>
-            <a class="project-link" href="https://github.com/yourusername" target="_blank">GitHub</a>
-          </article>
+/* Floating FAB */
+.fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--accent), #ff7a62);
+  color: white;
+  display: inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  box-shadow: 0 12px 30px rgba(255,107,83,0.18);
+  font-weight: 700;
+  transform-origin: center;
+  transition: transform .18s ease;
+}
+.fab:hover { transform: translateY(-6px) rotate(-8deg); }
 
-        </div>
-      </div>
-    </section>
+/* Responsive breakpoints */
+@media (max-width: 980px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner { flex-direction: column-reverse; gap: 1.25rem; padding: 1rem; }
+  .hero-image { align-self: center; }
+  .hero-title { font-size: 1.9rem; }
+}
 
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
-      <div class="container contact-inner">
-        <h2 class="section-title">Contact</h2>
-        <p>
-          Email: <a href="mailto:apurvam@example.com">apurvam@example.com</a>
-        </p>
-      </div>
-    </section>
+@media (max-width: 640px) {
+  .site-nav { display: none; } /* keep header simple on small screens */
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 1.5rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .container { width: 94%; padding: 0; }
+  .footer-inner { flex-direction: column; gap: .5rem; text-align:center; }
+}
 
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2025 Apurvam Arya</p>
-      <a class="back-top" href="#main">Back to Top</a>
-    </div>
-  </footer>
-
-  <a class="fab" href="#main">↑</a>
-</body>
-</html>
+@media (prefers-reduced-motion: reduce) {
+  .animated-role, .btn, .project-card, .skill-card, .hero-image img { animation: none; transition: none; }
+}
